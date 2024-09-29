@@ -1,0 +1,457 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+    line-height: 1.6;
+}
+
+/* Navigation Bar Styling */
+header {
+    position: relative;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.2); /* Transparansi untuk efek blur */
+    backdrop-filter: blur(15px); /* Efek blur */
+    z-index: 1000; /* Agar header tetap di atas konten lain */
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Memusatkan konten secara horizontal */
+    padding: 10px 20px;
+}
+
+header .logo {
+    flex: 1;
+    text-align: center; /* Memusatkan logo "Marvel" */
+}
+
+.logo h1 {
+    font-size: 24px;
+    position: relative;
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #fcdbeb 0px 0px 20px, #fcdbeb 0px 0px 30px, #fcdbeb 0px 0px 40px, #fcdbeb 0px 0px 50px, #fcdbeb 0px 0px 75px, 2px 2px 3px rgba(206,89,55,0);
+    color: rgb(201, 168, 142);
+}
+
+.additional-text {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out; /* Haluskan transisi opacity */
+    display: inline-block;
+    margin-left: 10px;
+    white-space: nowrap;
+    color: rgb(201, 168, 142); /*warna samakan dengan hi supaya bagus hasilnya */
+}
+
+.logo:hover .additional-text {
+    opacity: 1; /* saat logo di hover, kondisi dari additional-text */ 
+}
+
+nav {
+    flex: 1;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center; /* Memusatkan link navigasi */
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff; /* Sesuaikan warna teks */
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+    display: inline-block;
+    padding: 10px 15px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    transition: color 0.3s, transform 0.3s; /* Transisi untuk warna dan transformasi */
+}
+
+
+nav ul li a:hover {
+    color: #fa709a; /* Warna saat hover */
+    transform: scale(1.1); /* Membesarkan sedikit saat hover */
+}
+
+#home {
+    display: flex;
+    justify-content: space-between; /* Memastikan foto dan teks ada di kiri dan kanan */
+    align-items: center;
+    padding: 50px 100px; /* Menambahkan jarak antara foto dan teks dengan tepi halaman serta bagian atas dan bawah */
+    gap: 50px; /* Memberi jarak antara foto dan teks */
+}
+
+
+/* Styling untuk foto profil */
+.profile-photo img {
+    border-radius: 30%;
+    width: 300px; /* Ukuran foto */
+    height: auto; /* supaya proposional*/
+    object-fit: cover; 
+}
+
+.profile-photo {
+    transform: translateY(100px);
+    opacity: 0;
+    transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+/* Ketika gambar sedang terlihat di layar, posisikan ke letak seharusnya/ reset kan animasi nya */
+.profile-photo.in-view {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Styling untuk bagian tentang saya */
+.about {
+    max-width: 65%; /* Menentukan lebar maksimal untuk teks */
+    margin-bottom: 15px; /* Memberi jarak antar elemen */
+    transform: translateY(100px);
+    opacity: 0;
+    transition: transform 2.5s ease-out, opacity 2.5s ease-out;
+}
+
+.about.in-view {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.about h2 {
+    color: rgb(129, 84, 48);
+    font-size: 2rem;
+    margin-bottom: 10px; /* Memberi jarak antar elemen */
+}
+.about h3 {
+    color: rgb(129, 84, 48);
+    font-size: 1.5rem;
+    margin-bottom: 10px; /* Memberi jarak antar elemen */
+}
+.about p {
+    color: rgb(129, 84, 48);
+    font-size: 1.2rem;
+    text-align: justify; /* Agar teks diratakan secara menyeluruh */
+    margin-bottom: 10px; /* Memberi jarak antar elemen */
+}
+
+.social-buttons a {
+    display: inline-block;
+    margin-right: 5px;
+    font-size: 1.2rem;
+    color: #e8e8e8;
+    transition: color 0.3s, transform 0.3s; /* Transisi untuk warna dan transformasi */
+}
+
+.social-buttons a:hover {
+    color: #fa709a; /* Warna saat hover */
+    transform: scale(1.2); /* Membesarkan sedikit saat hover */
+}
+
+.hire-me button {
+    padding: 10px 20px;
+    background-color: #fa709a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.hire-me button:hover {
+    background-color: #fee140;
+}
+
+
+
+/* Animasi untuk skill-category */
+@keyframes slide-in {
+    from {
+        transform: translateX(-100px); /* Mulai dari kiri */
+        opacity: 0; /* Opasitas 0 */
+    }
+    to {
+        transform: translateX(0); /* Berakhir di posisi normal */
+        opacity: 1; /* Opasitas 1 */
+    }
+}
+
+#skills-experience {
+    padding: 50px 0;
+    text-align: center;
+}
+
+#skills-experience h2 {
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    padding: 30px 0;
+}
+
+.skills-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* jarak antar skill */
+    flex-wrap: wrap; /* untuk memastikan skill tetap terlihat jika layar lebih kecil */
+}
+
+.skill-category {
+    background-color: white;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* efek Bayangan pembungkus*/
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    font-size: 1.25rem;
+    text-align: center;
+    object-fit: cover; 
+    max-width: 550px;
+    max-height: 550px;
+    opacity: 0; /* Mulai dengan opasitas 0 */
+    transform: translateX(-100px); /* Mulai dari kiri */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Class aktif untuk menambahkan animasi */
+.skill-category.active {
+    animation: slide-in 1s forwards;
+}
+
+.skill-category h3, .award h3{
+    color: black;
+}
+
+.award-images img{
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+}
+
+.awards-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+    gap: 20px; /* jarak antar award */
+    flex-wrap: wrap; /* untuk memastikan award tetap terlihat jika layar lebih kecil */
+}
+
+.award {
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Bayangan dibikin jadi lebih tegas */
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.25rem;
+    text-align: center;
+    max-width: 550px;
+    max-height: 550px;
+    position: relative;
+    overflow: hidden;
+}
+#awards-certifications h2 {
+    text-align: center;
+    padding: 30px 0;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.award li {
+    list-style: none;
+}
+
+.award-images {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 15px;
+}
+
+@keyframes get-in {
+    from {
+        transform: translateY(100px); /* Mulai dari bawah */
+        opacity: 0; /* Opasitas 0 */
+    }
+    to {
+        transform: translateY(0); /* Berakhir di posisi normal */
+        opacity: 1; /* Opasitas 1 */
+    }
+}
+
+.award-images img {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    opacity: 0; /* Animasi dimulai dari opacity 0 */
+    transform: translateY(100px); /* Mulai dari posisi di bawah */
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out; /* Transisi nya*/
+}
+
+/* Animasi gambar saat terlihat */
+.award-images.show img{
+    animation: get-in 0.5s forwards;
+    opacity: 1; /* Opasitas menjadi 1 saat animasi */
+    transform: translateY(0); /* Posisi normal setelah animasi */
+}
+
+#contact {
+    background-color: #333;
+    padding: 50px 0;
+    color: white;
+}
+
+.contact-info {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.contact-info h3 {
+    margin-bottom: 20px;
+}
+
+.contact-button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #fa709a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    font-size: 16px;
+}
+
+.contact-button a {
+    color: white;
+    text-decoration: none;
+}
+
+.contact-button:hover {
+    background-color: #fee140;
+    transform: scale(1.05);
+}
+
+/* Form Section Styling */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #444; /* waarna latar belakang pada form dibuat lebih kontras */
+    padding: 30px;
+    border-radius: 10px; /* Membuat form lebih rounded */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Memberikan bayangan */
+    opacity: 0; /* Mulai dengan form tidak terlihat */
+    transform: translateY(50px); /* Awal posisi form di bawah */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Transisi smooth */
+}
+
+/* Untuk form terlihat ketika di-scroll ke area contact */
+.contact-form.in-view {
+    opacity: 1;
+    transform: translateY(0); /* Kembalikan form ke posisi normal */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #fa709a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s; /* Animasi pada hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Tambah bayangan pada tombol */
+}
+
+button[type="submit"]:hover {
+    background-color: #fee140;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5); /* Bayangan lebih tebal saat hover */
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.footer-container ul li {
+    margin: 0 10px;
+}
+
+.footer-container ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-container ul li a:hover {
+    color: #fa709a;
+}
+
+/* media query untuk ngatur view port disini */
+@media (max-width: 868px) {
+    #home {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-photo img {
+        margin-bottom: 20px;
+    }
+
+    header .container {
+        flex-direction: column;
+    }
+
+    .logo {
+        flex-wrap: wrap;
+    }
+
+    nav ul {
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+    nav ul li {
+        margin: 15px 0;
+    }
+
+    .logo {
+        flex: 1; /* Biar logo tetap di kiri pada layar kecil */
+    }
+
+    .container {
+        justify-content: space-between;
+    }
+}
